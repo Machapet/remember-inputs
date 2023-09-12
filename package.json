@@ -1,0 +1,82 @@
+{
+  "name": "remember-inputs",
+  "displayName": "Remember Inputs",
+  "description": "The extension makes user inputs easier to use. It remembers their last used values.",  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Machapet/remember-inputs"
+  },
+  "author": {
+    "name": "Petr Machacek",
+    "email": "petr.machacek@gmail.com",
+    "url:": "https://github.com/Machapet"
+  },
+  "publisher": "Machapet",  
+  "license": "MIT",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.38.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:remember.pickString",
+    "onCommand:remember.promptString",
+    "onCommand:remember.recallString"
+  ],
+  "main": "./out/extension.js",
+  
+  "contributes": {
+		"commands": [
+			{
+				"command": "remember.pickString",
+				"title": "Pick String"
+			},
+			{
+				"command": "remember.promptString",
+				"title": "Prompt String"
+			},
+			{
+				"command": "remember.recallString",
+				"title": "Recall String"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "remember.pickString",
+					"when": "false"
+				},
+				{
+					"command": "remember.promptString",
+					"when": "false"
+				},
+				{
+					"command": "remember.recallString",
+					"when": "false"
+				}
+			]
+		}
+	},
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.38.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6",
+    "@vscode/test-electron": "^2.3.4"
+  }
+}
